@@ -1,0 +1,11 @@
+<div class="class">
+  <div *ngIf="canShow">
+    ISSO É UM TESTE
+  </div>>
+  <h2 *ngIf="name === 'Ramon'; else nomeErrado">Conteudo exibido</h2>
+  <ng-template #nomeErrado>
+    <div>
+      O conteudo não pode ser exibido
+    </div>
+  </ng-template>
+</div>
