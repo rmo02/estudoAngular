@@ -12,12 +12,7 @@ import { Funcionario } from 'src/app/Funcionario';
 
 export class ListRenderComponent implements OnInit {
 
-  animals: Animal[] = [
-    {name: "Bob", type: "Cat", age: 4},
-    {name: "Alfa", type: "Cat", age: 5},
-    {name: "Banze", type: " Dog", age: 11},
-    {name: "Beta", type: "Horse", age: 7},
-  ]
+  animals: Animal[] = [];
 
   funcionarios: Funcionario[] = [
     {name: "AAA", salario: "$2000"},
@@ -40,7 +35,9 @@ export class ListRenderComponent implements OnInit {
     this.funcionarioDetais = `O Funcionário ${funcionario.name} tem ${funcionario.salario}`
   }
 
-  constructor(private listService: ListService) { }
+  constructor(private listService: ListService) {
+    this.getAnimals()
+   }
 
   ngOnInit(): void {
   }
@@ -52,7 +49,11 @@ export class ListRenderComponent implements OnInit {
 
   removeFuncionario(funcionario: Funcionario) {
     console.log("Removendo funcionário");
-    
-
   }
+
+
+  getAnimals(): void{
+    this.listService.getAll().subscribe((animals) => (this.animals = animals));  //animals do subscribe pode ser trocado por qualquer outra variável
+  }
+
 }
